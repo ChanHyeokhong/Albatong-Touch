@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+
+{% block contents %}
+<body>
+<div>
+    <div class="jumbotron" style="padding-top:100px">
+        <h1 class="display-4">
+            <div class="container">
+                 <h1 style="font-weight:600; color:darkslategrey"> {{current_user}} </h1>
+            </div>
+        </h1>
+        <div class="container">  
+            <p class="lead">안녕하세요 12번째 세션입니다. </p>
+        </div>
+        <div class="container">
+            <hr class="my-4">
+            <p>문의 사항이 있으면 자유롭게 문의 해 주세요.</p>
+            
+            {% if error %}
+            <p style="color:red;">{{error}}</p>
+            {%endif%}
+            <button type="button" class="btn btn-dark"><a href="{% url 'new' %}"  style="color:white;" > New Post </a></button>
+        </div>
+    </div>
+</div>
+
+<div class="container">                 
+    <form id="form-submit" action="{% url 'search' %}" method="get">
+
+        <div class="row">
+            <select name='location'>
+                <option value="">장소를 선택하세요</option>
+                <option value="강남구 역삼1동">강남구 역삼1동</option>
+                <option value="강남구 역삼2동">강남구 역삼2동</option>
+            </select>
+
+            <select name='job_type'>
+                <option value="">업직종을 선택하세요</option>
+                <option value="매장관리">매장관리</option>
+                <option value="서비스">서비스</option>
+            </select>
+
+            <button type="submit" id="form-submit" class="btn">Search Now</button>
+        </div>
+    </form>
+</div>
+
+{% for blog in blogs.all %}
+    <div class="container">
+        <div class="card" style="padding:7px" >
+            <div class="card-body">
+            <a href="{% url 'detail' blog.id %}"> <h5 class="card-title">{{blog.title}}</h5></a>
+            <h6 class="card-text">{{blog.area}}</h6>
+            <h6 class="card-text">{{blog.job_type}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{blog.author}}  -  {{blog.pub_date}}</h6>
+            <p class="card-text">{{blog.body}}</p>
+            </div>
+        </div>
+    </div>
+<br>
+{% endfor %}
+</body>
+{% endblock %}

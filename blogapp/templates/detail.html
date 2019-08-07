@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block contents %}
+<br>
+<div class="container" style="padding-top:100px;">
+    <div class="card" >
+        <div class="card-body">
+        <h5 class="card-title">{{details.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{details.author}} - {{details.pub_date}}</h6>
+        <p class="card-text">근무요일 {{details.userdate1}}~{{details.userdate2}}</p>
+        <h5 style="font-weight:600;">모집 부문</h5> 
+        <p class="card-text">업직종 {{details.job_type}}</p>
+        <h5 style="font-weight:600;">모집 조건</h5>
+        <p class="card-text">성별 {{details.gender}}</p>
+        <p class="card-text">나이 {{details.age}}</p>
+        <p class="card-text">학력 {{details.edu}}</p>
+        <p class="card-text">필요조건 <br> {{details.condition}}</p>
+        <h5 style="font-weight:600;">근무 조건</h5>
+        <p class="card-text">급여 {{details.pay}}</p>
+        <p class="card-text">근무요일 {{details.userdate1}}~{{details.userdate2}}</p>
+        <p class="card-text">근무시간 {{details.time1}} ~ {{details.time2}}</p>
+        <p class="card-text">근무지역 {{details.area}}</p>   
+        <p class="card-text">우대사항 {{details.plus}}</p>            
+        <h5 style="font-weight:600;">연락처</h5>
+        <p class="card-text">이메일 {{details.email}}</p>
+        <p class="card-text">개인 연락처 {{details.call}}</p>
+        <p class="card-text">기타사항 <br> {{details.etc}}</p>
+        <p class="card-text">모집 마감일 <br> {{details.enddate}}</p>
+        <p class="card-text">{{details.body}}</p>
+        <p class="card-text">{{details.likes}}</p>
+        <li>
+            <form action="{% url 'post_like' details.id%}" method="POST">
+                {%csrf_token%}
+                <button type="submit" value="Like">좋아요</button>
+            </form>
+
+            <p>좋아요 {{details.like_count}}개</p>
+            {%for like_user in details.like_user_set.all%}
+                <p>{{like_user.username}}</p>
+            {% endfor %}
+        </li>
+        {% if details.author == user %}
+        <h6 class="card-subtitle mb-2 text-muted">마감일: {{details.enddate}}</h6> <!--마감일--> 
+        <a href="{% url 'delete' details.id%}" class="card-link"> 삭제하기 </a>
+        <a href="{% url 'update' details.id%}" class="card-link"> 수정하기 </a>
+        {% endif %}
+        </div>
+    </div>
+</div>
+    <br>
+    <div class="container">
+        <br>
+        <button type="button" class="btn btn-dark"><a href="{% url 'home' %}"  style="color:white;" > 홈으로 가기 </a></button>
+    </div>
+
+{%endblock%}
