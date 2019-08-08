@@ -1,20 +1,59 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User  #회원 관리해주는 기능 끌어오기 
+from django.contrib.auth.models import User  #회원 관리해주는 기능 끌어오기
 from django.contrib import auth              #회원 권한관리 기능 끌어오기
+from accounts.tokens import account_activation_token
+from accounts.forms import SignUpForm
+from django.contrib.auth import login
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 def signup(request):
     if request.method == 'POST':
-        # POST 요청이 들어온다면
-        if request.POST['password1'] == request.POST['password2']:
-        # 입력한 password1과 password2를 비교 만약 같으면 
-            user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-        #새로운 회원을 추가한다.
-        auth.login(request, user)
-        #성공적으로 추가되면 바로 로그인시켜주고
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()
+
+            current_site = get_current_site(request)
+            subject = 'Activate Your MySite Account'
+            message = render_to_string('account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+            })
+            user.email_user(subject, message)
+
+            return redirect('account_activation_sent')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+
+def account_activation_sent(request):
+    return render(request, 'account_activation_sent.html')
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.profile.email_confirmed = True
+        user.save()
         return redirect('home')
-        # 홈으로 돌아가기.
-    return render(request, 'signup.html')
-    
+    else:
+        return render(request, 'account_activation_invalid.html')
+
+
 def login(request):
     if request.method == 'POST':
         #post 요청이 들어온다면

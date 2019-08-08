@@ -122,27 +122,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-	os.path.join(BASE_DIR, 'blogapp', 'static'),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_FINDERS = (
-	'django.contrib.staticfiles.finders.FileSystemFinder',
-)
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['postproject/templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_PORT=587
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='hch5783@gmail.com'
+EMAIL_HOST_PASSWORD='cksgur123'
+SERVER_EMAIL='hch5783@gmail.com'
+DEFAULT_FROM_MAIL='hch5783'

@@ -22,7 +22,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">About</a>
                 </li>
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated %} 
                 <!-- 만약 로그인이 되어있으면 로그아웃 버튼이 나타나도록 -->
                 <li class="nav-item" style="position:absolute; top: 10px; right: 50px;">
                   <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -36,32 +36,23 @@
                   <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
                 {% endif %}
-
+                
               </ul>
             </div>
           </nav>
     </nav>
 </body>
 {% block contents %}
-    <br>
-    <br>
-    <br>
-
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
 {% endblock %}
+<!-- Footer -->
+
+<footer class="page-footer font-small blue" style="background-color:#212529; margin-top:400px; ">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="color:white">© 2019 Copyright : 
+      <a href="#">Als</a>
+    </div>
+    <!-- Copyright -->
+  </div>
+  </footer>
+  <!-- Footer -->
