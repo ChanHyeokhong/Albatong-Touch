@@ -38,7 +38,7 @@
                 </select>
 
                 <label for="exampleSelect1"> Job    </label>
-                <select class="form-control" name='job_type' style="display: inline; width:40%">
+                <select class="form-control" name='job_type' style="display: inline; width:40%;">
                     <option value="">업직종을 선택하세요</option>
                     <option value="매장관리">매장관리</option>
                     <option value="서비스">서비스</option>
@@ -49,7 +49,7 @@
         </form>
     </div>
 
-{% for blog in posts %}
+{% for blog in blogs.all %}
 <br>
     <div class="container">
         <div class="card border-primary mb-3">
