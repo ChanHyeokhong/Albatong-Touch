@@ -37,7 +37,7 @@
     </form>
 </div>
 
-{% for blog in blogs.all %}
+{% for blog in posts %}
     <div class="container">
         <div class="card" style="padding:7px" >
             <div class="card-body">
@@ -51,5 +51,22 @@
     </div>
 <br>
 {% endfor %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <a class="page-link" href="?page=1">First</a>
+        {% if posts.has_previous %}
+            <a class="page-link" href="?page={{posts.previous_page_number}}">Previous</a>
+        {% endif %}
+      <li class="page-item"><a class="page-link" href="?page={{posts.number}}">{{posts.number}}</a></li>
+      <li class="page-item"><a class="page-link">of</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{posts.paginator.num_pages}}">{{posts.paginator.num_pages}}</a></li>
+        {% if posts.has_next %}
+            <a class="page-link" href="?page={{posts.next_page_number}}">Next</a>
+        {% endif %}
+        <a class="page-link" href="?page={{posts.paginator.num_pages}}">Last</a>
+      </li>
+    </ul>
+</nav>
+
 </body>
 {% endblock %}

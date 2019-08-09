@@ -1,12 +1,17 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Blog
+from .models import Blog, Comment
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 	
 def home(request):
     blogs = Blog.objects
-    return render(request, 'home.html', {'blogs': blogs})
+    blog_all = Blog.objects.all()
+    paginator = Paginator(blog_all,3)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'home.html', {'blogs': blogs, 'posts':posts})
 
 #카테고리 별로 블로그 불러오기
 def search(request):

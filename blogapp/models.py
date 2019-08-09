@@ -41,4 +41,10 @@ class Like(models.Model):
 	class Meta:
 		unique_together = (('user','blog'))	
 
+class Comment(models.Model):
+	blog = models.ForeignKey('Blog', on_delete=models.CASCADE, related_name='comments')
+	comment_author = models.CharField(max_length = 10)
+	comment_contents = models.TextField(max_length = 200)
+	created_date = models.DateTimeField(auto_now_add = True)
+
 
