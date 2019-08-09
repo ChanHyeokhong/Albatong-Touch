@@ -1,0 +1,10 @@
+.title-image {
+    width:50%;
+    /* transform: rotate(-5deg); */
+    /* position:absolute; */
+    right: 5%;
+  }
+
+  #title {
+      padding-left : 20px;
+  }

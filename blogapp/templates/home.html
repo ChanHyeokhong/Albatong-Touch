@@ -1,29 +1,21 @@
 {% extends 'base.html'%}
-
+{% load static %}
 {% block contents %}
-<body>
-<div>
-    <div class="jumbotron" style="padding-top:100px">
-        <h1 class="display-4">
-            <div class="container">
-                 <h1 style="font-weight:600; color:darkslategrey"> {{current_user}} </h1>
-            </div>
-        </h1>
-        <div class="container">  
-            <p class="lead">안녕하세요 12번째 세션입니다. </p>
-        </div>
-        <div class="container">
-            <hr class="my-4">
-            <p>문의 사항이 있으면 자유롭게 문의 해 주세요.</p>
-            
-            {% if error %}
-            <p style="color:red;">{{error}}</p>
-            {%endif%}
-            <button type="button" class="btn btn-dark"><a href="{% url 'new' %}"  style="color:white;" > New Post </a></button>
-        </div>
-    </div>
-</div>
 
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section id="title">
+
+        <div class="col-lg-6">
+            <img class="title-image" src="{% static 'img/logo.png' %}">
+        </div>
+        {% if error %}
+        <p style="color:red;">{{error}}</p>
+        {%endif%}
+        <button type="button" class="btn btn-dark"><a href="{% url 'new' %}"  style="color:black;" > New Post </a></button>
+    </section>
 <div class="container">                 
     <form id="form-submit" action="{% url 'search' %}" method="get">
 
