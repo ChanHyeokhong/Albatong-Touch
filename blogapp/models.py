@@ -20,7 +20,7 @@ class Blog(models.Model):
 	email =  models.CharField(max_length=30, null=True)
 	call =  models.CharField(max_length=15, null=True)
 	etc =  models.CharField(max_length=100, null=True)
-	enddate = models.DateTimeField(null=True)
+	enddate = models.CharField(max_length=10, default="")
 	pub_date = models.DateTimeField('date published')
 	body = models.TextField()
 	like_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='like_user_set',through='Like')
