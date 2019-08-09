@@ -4,36 +4,40 @@
 <div class="container" style="padding-top:100px;">
     <div class="card" >
         <div class="card-body">
-
-                <h5 class="card-title">{{details.title}}</h5>
+                <h2 class="card-title">{{details.title}}</h2>
                 <h6 class="card-subtitle mb-2 text-muted">{{details.author}} - {{details.pub_date}}</h6>
                 <hr>
-                <h3>
+                <h4>
                     모집 부문 : 
-                    <small clsss="text-muted">{{details.job_type}}</small>
-                </h3>
-
-                <table class="table table-hover">
-                    <thread>
-                        <tr>
-                            <th scope="col">모집 조건</th>
-                            <th scope="col">성별</th>
-                            <th scope="col">나이</th>
-                            <th scope="col">학력</th>
-                            <th scope="col">필요조건</th>
-                        </tr>
-                    </thread>
-                    <tbody>
-                        <tr class="table-active">
-                            <th scope="row"> - </th>
-                            <td>{{details.gender}}</td>
-                            <td>{{details.age}}</td>
-                            <td>{{details.edu}}</td>
-                            <td>{{details.condition}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                    <small class="text-muted">{{details.job_type}}</small>
+                </h4>
+                <br>
+    
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">모집 조건</h4>
+                        <br>
+                        <table class="table table-hover">
+                            <thread>
+                                <tr>                            
+                                    <th scope="col">성별</th>
+                                    <th scope="col">나이</th>
+                                    <th scope="col">학력</th>
+                                    <th scope="col">필요조건</th>
+                                </tr>
+                            </thread>
+                            <tbody>
+                                <tr class="table-active">
+                                    <td>{{details.gender}}</td>
+                                    <td>{{details.age}}</td>
+                                    <td>{{details.edu}}</td>
+                                    <td>{{details.condition}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            
                 <div class="card bg-light mb-3 wldnjs" style="width: 40%; display: inline-block; margin : 50px;">
                         <div class="card-header">근무조건</div>
                         <div class="card-body">
@@ -93,13 +97,6 @@
                 <p class="card-text">{{details.likes}}</p>
             </table>
 
-
-
-
-
-
-
-
         <li style="list-style:none;padding-left:0px;">
             <form action="{% url 'post_like' details.id%}" method="POST">
                 {%csrf_token%}
@@ -120,6 +117,7 @@
 </div>
 
 <div class='container' style = 'text-align: center'>
+    <div class="card">
     <h2><strong>Comments</strong></h2>
     {% for comment in details.comments.all %}
         <span>글쓴날짜</span>{{comment.created_date}}<br>
@@ -132,6 +130,8 @@
         <p>No comments here yet </p>
     {% endfor %}
     {% if user.is_authenticated %}
+    </div>
+    <div class="card">
     <h2><strong>Create Comments</strong></h2>
     <div class="container">
         <form action="" method="POST">
@@ -140,6 +140,7 @@
             <textarea name="comment_contents" placeholder="댓글내용"></textarea><br>
             <button type="submit">등록</button>
         </form>
+    </div>
 </div>
 {% endif%}
 </div>

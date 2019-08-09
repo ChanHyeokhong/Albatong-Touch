@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 class Blog(models.Model):
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=100)
-	area = models.CharField(max_length=100, default = "강남구 역삼1동")
-	job_type = models.CharField(max_length=100, default = "서비스")
+	area = models.CharField(max_length=100, default = "개포동")
+	job_type = models.CharField(max_length=100, default = "매장관리")
 	gender = models.CharField(max_length=10, default=0)
 	condition = models.CharField(max_length=200, null=True)
 	age = models.CharField(max_length=3, null=True)

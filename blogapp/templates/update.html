@@ -9,7 +9,11 @@
 {% csrf_token %}
  <div class="form-group">
     <label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
+<<<<<<< HEAD
     <input  class="form-control form-control-lg" type="text" id="inputLarge" name="title" value={{updates.title}} required>
+=======
+    <input  class="form-control form-control-lg" type="text" id="inputLarge" name="title"type="text" value={{updates.title}} required>
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
 </div>
     <br>
     <br>
@@ -18,7 +22,10 @@
             <div class="card-body">
             <label for="exampleSelect1">업직종 선택:</label>
     <select type="text" class="custom-select" name="job" value={{updates.job_type}} required>
+<<<<<<< HEAD
     <option selected="">{{updates.job_type}}</option>
+=======
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
     <option value="매장관리">매장관리</option>
     <option value="서빙·주방">서빙·주방</option>
     <option value="서비스">서비스</option>
@@ -38,7 +45,10 @@
     <div class="card-body">
         <label for="exampleSelect1">성별:</label>
     <select class="form-control" id="exampleSelect1" name="gender" value={{updates.gender}} required>
+<<<<<<< HEAD
     <option selected="">{{updates.gender}}</option>
+=======
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
     <option value="남성">무관</option>
     <option value="남성">남성</option>
     <option value="여성">여성</option>
@@ -51,7 +61,10 @@
     <br>
     <label for="edu">학력: </label>
     <select type="text" name="edu" class="form-control" id="exampleSelect1" value={{updates.edu}} required>
+<<<<<<< HEAD
             <option selected="">{{updates.edu}}</option>
+=======
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
         <option value="학력무관">학력무관</option>
         <option value="중학교 졸업 이상">중학교 졸업 이상</option>
         <option value="고등학교 졸업 이상">고등학교 졸업 이상</option>
@@ -89,7 +102,10 @@
             <div class="card-body">
                     <label for="exampleSelect1">근무지역 선택:</label>
     <select class="custom-select" type="text" name="place" value={{updates.area}} required>
+<<<<<<< HEAD
      <option selected="">{{updates.area}}</option>
+=======
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
     <option value="개포동">개포동</option>
     <option value="개포1동">개포1동</option>
     <option value="개포2동">개포2동</option>
@@ -126,7 +142,10 @@
     <br>
     <label for="exampleSelect1">우대사항 선택:</label>
     <select type="text" class="custom-select" name="plus" value={{updates.plus}} required>
+<<<<<<< HEAD
             <option selected="">{{updates.plus}}</option>
+=======
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
     <option value="영어가능">영어가능</option>
     <option value="일본어가능">일본어가능</option>
     <option value="중국어가능">중국어가능</option>
@@ -161,7 +180,11 @@
     <br>
     <br> 
     <label for="exampleTextarea">모집마감일</label>
+<<<<<<< HEAD
     <input type="date" class="form-control" type="date" name="enddate" value={{updates.enddate}} required> 
+=======
+    <input type="datetime-local" class="form-control" type="datetime-local" name="enddate" value={{updates.enddate}} required> 
+>>>>>>> 63f607097ca8706f8f24d052c8d34189bf719d7e
     <br>
     <br>
     <label for="exampleTextarea">기타사항</label>
