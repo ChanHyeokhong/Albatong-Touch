@@ -37,8 +37,15 @@ def search(request):
         return render(request, 'home.html', {'blogs': queryset})
 
 def detail(request, blog_id): 
-	details = get_object_or_404(Blog, pk=blog_id)
-	return render(request, 'detail.html', {'details':details})
+    details = get_object_or_404(Blog, pk=blog_id)
+    if request.method == "POST":
+        Comment.objects.create(
+            blog = details,
+            comment_author = request.POST.get('comment_author'),
+            comment_contents = request.POST.get('comment_contents'),
+        )
+        return redirect('/blog/'+str(details.id))
+    return render(request, 'detail.html', {'details':details })
 
 def new(request):
     if request.user.is_authenticated: 
@@ -74,6 +81,12 @@ def create(request):
     blog.pub_date = timezone.datetime.now()
     blog.save()
     return redirect('/blog/'+str(blog.id)) 
+
+def comment_delete(request, blog_id, comment_id):
+    details = get_object_or_404(Blog, pk=blog_id)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return redirect('/blog/'+str(details.id))
 
 def delete(request, blog_id):
     destroy = get_object_or_404(Blog, pk=blog_id)
