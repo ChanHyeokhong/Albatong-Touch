@@ -11,7 +11,7 @@
         {% csrf_token%}
         <div class="form-group">
             <label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
-            <input class="form-control form-control-lg" type="text" placeholder="제목을 입력해 주세요" id="inputLarge" name="title">
+            <input class="form-control form-control-lg" type="text" placeholder="제목을 입력해 주세요" id="inputLarge" name="title" required>
         </div>
         <br>
         <br>
@@ -19,7 +19,7 @@
             <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">  모집부문</label>
             <div class="card-body">
                 <label for="exampleSelect1">업직종 선택:</label>
-            <select class="custom-select" name="job">
+            <select class="custom-select" name="job" required>
               <option selected="">업직종을 선택하세요.</option>
               <option value="매장관리">매장관리</option>
               <option value="서빙·주방">서빙·주방</option>
@@ -39,7 +39,7 @@
         <br>
         <div class="card-body">
                 <label for="exampleSelect1">성별:</label>
-                <select class="form-control" id="exampleSelect1" name="gender">
+                <select class="form-control" id="exampleSelect1" name="gender" required>
                     <option selected="">모집하는 성별을 선택하세요.</option>
                     <option value="남성">무관</option>
                     <option value="남성">남성</option>
@@ -49,11 +49,11 @@
         <br>
 
         <label class="col-form-label" for="inputDefault">연령:</label>
-        <input type="text" class="form-control" placeholder="모집하는 연령을 입력하세요." id="inputDefault" name="age">
+        <input type="text" class="form-control" placeholder="모집하는 연령을 입력하세요." id="inputDefault" name="age" required>
         <br>
         <br>
         <label for="exampleSelect1">학력:</label>
-        <select class="form-control" id="exampleSelect1" name="edu">
+        <select class="form-control" id="exampleSelect1" name="edu" required>
                 <option selected="">모집하는 학력을 선택하세요.</option>
                 <option value="학력무관">학력무관</option>
                 <option value="중학교 졸업 이상">중학교 졸업 이상</option>
@@ -64,7 +64,7 @@
         <br>
         <br>
         <label class="col-form-label" for="inputDefault">필요조건:</label>
-        <input type="text" class="form-control" placeholder="필요조건을 입력하세요." id="inputDefault" name="condition">
+        <input type="text" class="form-control" placeholder="필요조건을 입력하세요." id="inputDefault" name="condition" required>
         <br>
         <br>   
         </div>
@@ -76,15 +76,15 @@
         <br>
         <div class="card-body">
                 <label class="col-form-label" for="inputDefault">급여:</label>
-                <input type="text" class="form-control" placeholder="급여를 입력하세요." id="inputDefault" name="pay"> 
+                <input type="text" class="form-control" placeholder="급여를 입력하세요." id="inputDefault" name="pay" required> 
                 <br>
                 <br>
                 <label class="col-form-label" for="inputDefault">근무 요일:</label>
-                <div><input type="date" class=" form-control" id="userdate" name="userdate1" value="userdate1"> ~ <input type="date" id="userdate" class=" form-control" name="userdate2" value="userdate2"></div>
+                <div><input type="date" class=" form-control" id="userdate" name="userdate1" value="userdate1" required> ~ <input type="date" id="userdate" class=" form-control" name="userdate2" value="userdate2" required></div>
                 <br>                                                                                                                            
                 <br>
                 <label class="col-form-label" for="inputDefault">근무 시간:</label>
-                <div><input type="time"class=" form-control" name="time1">~<input type="time" class=" form-control" name="time2"></div>
+                <div><input type="time"class=" form-control" name="time1" required>~<input type="time" class=" form-control" name="time2" required></div>
         </div>
     </div>
     <br>
@@ -93,7 +93,7 @@
         <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">모집부문</label>
         <div class="card-body">
                 <label for="exampleSelect1">근무지역 선택:</label>
-                <select class="custom-select" name="place">
+                <select class="custom-select" name="place" required>
                     <option selected="">근무지역을 선택하세요.</option>
                     <option value="개포동">개포동</option>
                     <option value="개포1동">개포1동</option>
@@ -130,7 +130,7 @@
                     <br>
                     <br>
                     <label for="exampleSelect1">우대사항 선택:</label>
-                    <select class="custom-select" name="plus">
+                    <select class="custom-select" name="plus" required>
                     <option selected="">우대사항을 선택하세요.</option>
                     <option value="영어가능">영어가능</option>
                     <option value="일본어가능">일본어가능</option>
@@ -159,15 +159,15 @@
         <br>
         <div class="card-body">
                 <label class="col-form-label" for="inputDefault">이메일:</label>
-                <input type="text" class="form-control" placeholder="이메일을 입력하세요." id="inputDefault" name="email"> 
+                <input type="text" class="form-control" placeholder="이메일을 입력하세요." id="inputDefault" name="email" required> 
                 <br>
                 <br>
                 <label class="col-form-label" for="inputDefault">개인 연락처:</label>
-                <input type="text" class="form-control" placeholder="개인 연락처를 입력하세요." id="inputDefault" name="call"> 
+                <input type="text" class="form-control" placeholder="개인 연락처를 입력하세요." id="inputDefault" name="call" required> 
                 <br>
                 <br>
                 <label for="exampleTextarea">모집마감일</label>
-                <input class="form-control" type="datetime-local" name="enddate"> 
+                <input class="form-control" type="datetime-local" name="enddate" required> 
                 <br>
                 <br>
                 <label for="exampleTextarea">기타사항</label>

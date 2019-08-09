@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 {% block contents %}
 <br>
-<div class="container" style="padding-top:100px;" >
-<h1 style="font-weight:600; color:darkslategrey"> 수정 페이지 입니다 </h1>
+<div class="jumbotron" style="padding-top:100px;" >
+<h1  class="card-header" style=" color: black"> 수정 페이지 입니다 </h1>
+
+<div class="container">
 <form action="{% url 'edit' updates.id%}" method="POST" >
 {% csrf_token %}
-     <h5 style="font-weight:600;">제목</h5>
-    <input type="text" name="title" value={{updates.title}}>
+ <div class="form-group">
+    <label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
+    <input  class="form-control form-control-lg" type="text" id="inputLarge" name="title"type="text" value={{updates.title}} required>
+</div>
     <br>
     <br>
-    <h5 style="font-weight:600;">모집 부문</h5>
-    <br>
-    <label for="job">업직종 선택: </label>
-    <select type="text" name="job" value={{updates.job_type}}>
+    <div class="card">
+            <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left:20px;">  모집부문</label>
+            <div class="card-body">
+            <label for="exampleSelect1">업직종 선택:</label>
+    <select type="text" class="custom-select" name="job" value={{updates.job_type}} required>
     <option value="매장관리">매장관리</option>
     <option value="서빙·주방">서빙·주방</option>
     <option value="서비스">서비스</option>
@@ -22,24 +27,28 @@
     <option value="상담·영업">상담·영업</option>
     <option value="강사·교육">강사·교육</option>
     </select>
+    </div>
+    </div>
     <br>
     <br>
-    <h5 style="font-weight:600;">모집 조건</h5>
+    <div class="card">
+            <label class="col-form-label col-form-label-lg" for="inputLarge"  style="margin-left:20px;">  모집조건</label>
     <br>
-    <label for="gender" >성별: </label>
-    <select name="gender" id="gender" value={{updates.gender}}>
+    <div class="card-body">
+        <label for="exampleSelect1">성별:</label>
+    <select class="form-control" id="exampleSelect1" name="gender" value={{updates.gender}} required>
     <option value="남성">무관</option>
     <option value="남성">남성</option>
     <option value="여성">여성</option>
     </select>
     <br>
     <br>
-    <label for="age">연령: </label>
-    <input type="text" name="age" value={{updates.age}}>
+    <label class="col-form-label" for="inputDefault">연령:</label>
+    <input type="text" name="age" value={{updates.age}} required>
     <br>
     <br>
     <label for="edu">학력: </label>
-    <select type="text" name="edu" value={{updates.edu}}>
+    <select type="text" name="edu" class="form-control" id="exampleSelect1" value={{updates.edu}} required>
         <option value="학력무관">학력무관</option>
         <option value="중학교 졸업 이상">중학교 졸업 이상</option>
         <option value="고등학교 졸업 이상">고등학교 졸업 이상</option>
@@ -48,23 +57,35 @@
     </select>
     <br>
     <br>
-    <p>필요조건</p>
-    <input type="text" name="condition" value={{updates.condition}}>
+    <label class="col-form-label" for="inputDefault">필요조건:</label>
+    <input type="text" class="form-control" name="condition" id="inputDefault" value={{updates.condition}} required>
     <br>
     <br>   
-    <h5 style="font-weight:600;">근무 조건</h5>
-    <label for="pay">급여: </label>
-    <input type="text" name="pay" value={{updates.pay}}>
+</div>
+</div>
+<br>
+<br>
+<div class="card">
+<label class="col-form-label col-form-label-lg" for="inputLarge"  style="margin-left:20px;">근무조건</label>
+<br>
+<div class="card-body">
+        <label class="col-form-label" for="inputDefault">급여:</label>
+    <input type="text" class="form-control"  id="inputDefault"name="pay" value={{updates.pay}} required>
     <br>
     <br>
-    <p>근무 요일</p>
-    <div><input type="date" id="userdate" name="userdate1" value={{updates.userdate1}}> ~ <input type="date" id="userdate" name="userdate2" value={{updates.userdate2}}></div>
+    <label class="col-form-label" for="inputDefault">근무 요일:</label>
+    <div><input type="date" class=" form-control" id="userdate" name="userdate1" value={{updates.userdate1}} required> ~ <input type="date" class=" form-control"id="userdate" name="userdate2" value={{updates.userdate2}} required></div>
     <br>
-    <p>근무 시간</p>
-    <div><input type="time" name="time1" value={{updates.time1}}>~<input type="time" name="time2" value={{updates.time2}}></div>
+    <label class="col-form-label" for="inputDefault">근무 시간:</label>
+    <div><input type="time" class=" form-control" name="time1" value={{updates.time1}} required>~<input type="time" class=" form-control" name="time2" value={{updates.time2}} required></div>
+</div>
+</div>
     <br>
-    <label for="place">근무지역: </label>
-    <select type="text" name="place" value={{updates.area}}>
+    <div class="card">        
+            <label class="col-form-label col-form-label-lg" for="inputLarge"  style="margin-left:20px;">모집부문</label>
+            <div class="card-body">
+                    <label for="exampleSelect1">근무지역 선택:</label>
+    <select class="custom-select" type="text" name="place" value={{updates.area}} required>
     <option value="개포동">개포동</option>
     <option value="개포1동">개포1동</option>
     <option value="개포2동">개포2동</option>
@@ -99,8 +120,8 @@
     </select>
     <br>
     <br>
-    <label for="plus">우대사항: </label>
-    <select type="text" name="plus" value={{updates.plus}}>
+    <label for="exampleSelect1">우대사항 선택:</label>
+    <select type="text" class="custom-select" name="plus" value={{updates.plus}} required>
     <option value="영어가능">영어가능</option>
     <option value="일본어가능">일본어가능</option>
     <option value="중국어가능">중국어가능</option>
@@ -117,24 +138,35 @@
     </select>
     <br>
     <br>
-    <h5 style="font-weight:600;">연락처</h5>
-    <p>이메일</p>
-    <input type="text" name="email" value={{updates.email}}>
+</div>
+</div>
+<br>
+<br>
+
+<div class="card">
+<label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left:20px;">연락처</label>
+<br>
+<div class="card-body">
+        <label class="col-form-label" for="inputDefault">이메일:</label>
+    <input type="text" class="form-control" id="inputDefault"name="email" value={{updates.email}} required>
     <br>
     <br>
-    <p>개인 연락처</p>
-    <input type="text" name="call" value={{updates.call}}>
+    <label class="col-form-label" for="inputDefault">개인 연락처:</label>
+    <input type="text" class="form-control" id="inputDefault" name="call" value={{updates.call}} required>
     <br>
     <br> 
-    <p>기타사항</p>
-    <input type="text" name="etc" value={{updates.etc}}>
+    <label for="exampleTextarea">모집마감일</label>
+    <input type="datetime-local" class="form-control" type="datetime-local" name="enddate" value={{updates.enddate}} required> 
     <br>
     <br>
-    <h5>모집 마감일: </h5> 
-    <input type="datetime-local" name="enddate" value={{updates.enddate}}> 
-    <br>
-    <br>
-   <input class="btn btn-dark" type="submit" value="제출하기">
+    <label for="exampleTextarea">기타사항</label>
+    <textarea class="form-control" name="etc" id="exampleTextarea"  value={{updates.etc}} rows="3"></textarea>
+</div>
+</div>
+<br>
+<br>
+<input class="btn btn-primary" type="submit" value="제출하기">
 </form>
+</div>
 </div>
 {%endblock%}
