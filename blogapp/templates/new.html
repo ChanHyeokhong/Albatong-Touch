@@ -3,142 +3,181 @@
 {% block contents %}
 <body>
     <br>
-    <div class="container" style="padding-top:100px;">
-            <h4 style="font-weight:600; color: black"> *게시물을 형식에 맞게 작성해주세요* </h4>
+    <div class="jumbotron" style="padding-top:100px;">
+            <h4  class="card-header" style=" color: black"> *게시물을 형식에 맞게 작성해주세요* </h4>
             <br>
     <div class="container">
         <form action="{% url 'create' %}" method="POST">
         {% csrf_token%}
-        <h5 style="font-weight:600;">제목</h5>
-        <input type="text" name="title">
+        <div class="form-group">
+            <label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
+            <input class="form-control form-control-lg" type="text" placeholder="제목을 입력해 주세요" id="inputLarge" name="title">
+        </div>
         <br>
         <br>
-        <h5 style="font-weight:600;">모집 부문</h5>
-        <br>
-        <label for="job">업직종 선택: </label>
-        <select type="text" name="job">
-            <option value="매장관리">매장관리</option>
-            <option value="서빙·주방">서빙·주방</option>
-            <option value="서비스">서비스</option>
-            <option value="생산·기능">생산·기능</option>
-            <option value="사무·회계">사무·회계</option>
-            <option value="IT·디자인">IT·디자인</option>
-            <option value="상담·영업">상담·영업</option>
-            <option value="강사·교육">강사·교육</option>
-        </select>
-        <br>
-        <br>
-        <h5 style="font-weight:600;">모집 조건</h5>
-        <br>
-        <label for="gender">성별: </label>
-        <select name="gender" id="gender">
-            <option value="남성">무관</option>
-            <option value="남성">남성</option>
-            <option value="여성">여성</option>
-        </select>
+        <div class="card">
+            <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">  모집부문</label>
+            <div class="card-body">
+                <label for="exampleSelect1">업직종 선택:</label>
+            <select class="custom-select" name="job">
+              <option selected="">업직종을 선택하세요.</option>
+              <option value="매장관리">매장관리</option>
+              <option value="서빙·주방">서빙·주방</option>
+              <option value="서비스">서비스</option>
+              <option value="생산·기능">생산·기능</option>
+              <option value="사무·회계">사무·회계</option>
+              <option value="IT·디자인">IT·디자인</option>
+              <option value="상담·영업">상담·영업</option>
+              <option value="강사·교육">강사·교육</option>
+            </select>
+          </div>
+        </div>
         <br>
         <br>
-        <label for="age">연령: </label>
-        <input type="text" name="age">
+        <div class="card">
+        <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">  모집조건</label>
+        <br>
+        <div class="card-body">
+                <label for="exampleSelect1">성별:</label>
+                <select class="form-control" id="exampleSelect1" name="gender">
+                    <option selected="">모집하는 성별을 선택하세요.</option>
+                    <option value="남성">무관</option>
+                    <option value="남성">남성</option>
+                    <option value="여성">여성</option>
+                </select>
         <br>
         <br>
-        <label for="edu">학력: </label>
-        <select type="text" name="edu">
+
+        <label class="col-form-label" for="inputDefault">연령:</label>
+        <input type="text" class="form-control" placeholder="모집하는 연령을 입력하세요." id="inputDefault" name="age">
+        <br>
+        <br>
+        <label for="exampleSelect1">학력:</label>
+        <select class="form-control" id="exampleSelect1" name="edu">
+                <option selected="">모집하는 학력을 선택하세요.</option>
                 <option value="학력무관">학력무관</option>
                 <option value="중학교 졸업 이상">중학교 졸업 이상</option>
                 <option value="고등학교 졸업 이상">고등학교 졸업 이상</option>
                 <option value="대학교 졸업 이상">대학교 졸업 이상</option>
                 <option value="대학교(4년)졸업 이상">대학교(4년)졸업 이상</option>
-            </select>
+        </select>
         <br>
         <br>
-        <p>필요조건</p>
-        <input type="text" name="condition">
+        <label class="col-form-label" for="inputDefault">필요조건:</label>
+        <input type="text" class="form-control" placeholder="필요조건을 입력하세요." id="inputDefault" name="condition">
         <br>
         <br>   
-        <h5 style="font-weight:600;">근무 조건</h5>
-        <label for="pay">급여: </label>
-        <input type="text" name="pay">
+        </div>
+    </div>
+    <br>
+        <br>
+        <div class="card">
+        <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">근무조건</label>
+        <br>
+        <div class="card-body">
+                <label class="col-form-label" for="inputDefault">급여:</label>
+                <input type="text" class="form-control" placeholder="급여를 입력하세요." id="inputDefault" name="pay"> 
+                <br>
+                <br>
+                <label class="col-form-label" for="inputDefault">근무 요일:</label>
+                <div><input type="date" class=" form-control" id="userdate" name="userdate1" value="userdate1"> ~ <input type="date" id="userdate" class=" form-control" name="userdate2" value="userdate2"></div>
+                <br>                                                                                                                            
+                <br>
+                <label class="col-form-label" for="inputDefault">근무 시간:</label>
+                <div><input type="time"class=" form-control" name="time1">~<input type="time" class=" form-control" name="time2"></div>
+        </div>
+    </div>
+    <br>
+        <br>
+        <div class="card">        
+        <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">모집부문</label>
+        <div class="card-body">
+                <label for="exampleSelect1">근무지역 선택:</label>
+                <select class="custom-select" name="place">
+                    <option selected="">근무지역을 선택하세요.</option>
+                    <option value="개포동">개포동</option>
+                    <option value="개포1동">개포1동</option>
+                    <option value="개포2동">개포2동</option>
+                    <option value="개포4동">개포4동</option>
+                    <option value="논현동">논현동</option>
+                    <option value="논현1동">논현1동</option>
+                    <option value="논현2동">논현2동</option>
+                    <option value="대치동">대치동</option>
+                    <option value="대치1동">대치1동</option>
+                    <option value="대치2동">대치2동</option>
+                    <option value="대치4동">대치4동</option>
+                    <option value="도곡동">도곡동</option>
+                    <option value="도곡1동">도곡1동</option>
+                    <option value="도곡2동">도곡2동</option>
+                    <option value="삼성동">삼성동</option>
+                    <option value="삼성1동">삼성1동</option>
+                    <option value="삼성2동">삼성2동</option>
+                    <option value="세곡동">세곡동</option>
+                    <option value="수서동">수서동</option>
+                    <option value="신사동">신사동</option>
+                    <option value="압구정동">압구정동</option>
+                    <option value="역삼동">역삼동</option>
+                    <option value="역삼1동">역삼1동</option>
+                    <option value="역삼2동">역삼2동</option>
+                    <option value="율현동">율현동</option>
+                    <option value="일원동">일원동</option>
+                    <option value="일원1동">일원1동</option>
+                    <option value="일원2동">일원2동</option>
+                    <option value="일원본동">일원본동</option>
+                    <option value="자곡동">자곡동</option>
+                    <option value="청담동">청담동</option>
+                            </select>
+                    <br>
+                    <br>
+                    <label for="exampleSelect1">우대사항 선택:</label>
+                    <select class="custom-select" name="plus">
+                    <option selected="">우대사항을 선택하세요.</option>
+                    <option value="영어가능">영어가능</option>
+                    <option value="일본어가능">일본어가능</option>
+                    <option value="중국어가능">중국어가능</option>
+                    <option value="컴퓨터활용가능">컴퓨터활용가능</option>
+                    <option value="포토샵가능">포토샵가능</option>
+                    <option value="한글(HWP)가능">한글(HWP)가능</option>
+                    <option value="워드가능">워드가능</option>
+                    <option value="엑셀가능">엑셀가능</option>
+                    <option value="파워포인트가능">파워포인트가능</option>
+                    <option value="유사업무경험자">유사업무경험자</option>
+                    <option value="인근거주">인근거주</option>
+                    <option value="운전가능">운전가능</option>
+                    <option value="업무관련자격증">업무관련자격증</option>
+                    </select>
+                    <br>
+                    <br>
+                    
+        </div>
+    </div>
+    <br>
+        <br>
+
+        <div class="card">
+        <label class="col-form-label col-form-label-lg" for="inputLarge" style="margin-left: 10px;">연락처</label>
+        <br>
+        <div class="card-body">
+                <label class="col-form-label" for="inputDefault">이메일:</label>
+                <input type="text" class="form-control" placeholder="이메일을 입력하세요." id="inputDefault" name="email"> 
+                <br>
+                <br>
+                <label class="col-form-label" for="inputDefault">개인 연락처:</label>
+                <input type="text" class="form-control" placeholder="개인 연락처를 입력하세요." id="inputDefault" name="call"> 
+                <br>
+                <br>
+                <label for="exampleTextarea">모집마감일</label>
+                <input class="form-control" type="datetime-local" name="enddate"> 
+                <br>
+                <br>
+                <label for="exampleTextarea">기타사항</label>
+                <textarea class="form-control" name="etc" id="exampleTextarea" rows="3"></textarea>
+
+        </div>
+        </div>
         <br>
         <br>
-        <p>근무 요일</p>
-        <div><input type="date" id="userdate" name="userdate1" value="userdate1"> ~ <input type="date" id="userdate" name="userdate2" value="userdate2"></div>
-        <br>
-        <p>근무 시간</p>
-        <div><input type="time" name="time1">~<input type="time" name="time2"></div>
-        <br>
-        <label for="place">근무지역: </label>
-        <select type="text" name="place">
-            <option value="개포동">개포동</option>
-            <option value="개포1동">개포1동</option>
-            <option value="개포2동">개포2동</option>
-            <option value="개포4동">개포4동</option>
-            <option value="논현동">논현동</option>
-            <option value="논현1동">논현1동</option>
-            <option value="논현2동">논현2동</option>
-            <option value="대치동">대치동</option>
-            <option value="대치1동">대치1동</option>
-            <option value="대치2동">대치2동</option>
-            <option value="대치4동">대치4동</option>
-            <option value="도곡동">도곡동</option>
-            <option value="도곡1동">도곡1동</option>
-            <option value="도곡2동">도곡2동</option>
-            <option value="삼성동">삼성동</option>
-            <option value="삼성1동">삼성1동</option>
-            <option value="삼성2동">삼성2동</option>
-            <option value="세곡동">세곡동</option>
-            <option value="수서동">수서동</option>
-            <option value="신사동">신사동</option>
-            <option value="압구정동">압구정동</option>
-            <option value="역삼동">역삼동</option>
-            <option value="역삼1동">역삼1동</option>
-            <option value="역삼2동">역삼2동</option>
-            <option value="율현동">율현동</option>
-            <option value="일원동">일원동</option>
-            <option value="일원1동">일원1동</option>
-            <option value="일원2동">일원2동</option>
-            <option value="일원본동">일원본동</option>
-            <option value="자곡동">자곡동</option>
-            <option value="청담동">청담동</option>
-        </select>
-        <br>
-        <br>
-        <label for="plus">우대사항: </label>
-        <select type="text" name="plus">
-            <option value="영어가능">영어가능</option>
-            <option value="일본어가능">일본어가능</option>
-            <option value="중국어가능">중국어가능</option>
-            <option value="컴퓨터활용가능">컴퓨터활용가능</option>
-            <option value="포토샵가능">포토샵가능</option>
-            <option value="한글(HWP)가능">한글(HWP)가능</option>
-            <option value="워드가능">워드가능</option>
-            <option value="엑셀가능">엑셀가능</option>
-            <option value="파워포인트가능">파워포인트가능</option>
-            <option value="유사업무경험자">유사업무경험자</option>
-            <option value="인근거주">인근거주</option>
-            <option value="운전가능">운전가능</option>
-            <option value="업무관련자격증">업무관련자격증</option>
-        </select>
-        <br>
-        <br>
-        <h5 style="font-weight:600;">연락처</h5>
-        <p>이메일</p>
-        <input type="text" name="email">
-        <br>
-        <br>
-        <p>개인 연락처</p>
-        <input type="text" name="call">
-        <br>
-        <br> 
-        <p>기타사항</p>
-        <input type="text" name="etc">
-        <br>
-        <br>
-        <h5>모집 마감일: </h5> 
-        <input type="datetime-local" name="enddate"> 
-        <br>
-        <br>
-        <input class="btn btn-dark" type="submit" value="제출하기">
+        <input class="btn btn-primary" type="submit" value="제출하기">
     </form>
     </div>
     </div>
