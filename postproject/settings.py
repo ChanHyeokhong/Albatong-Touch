@@ -137,3 +137,6 @@ EMAIL_HOST_USER='lcw729@likelion.org'
 EMAIL_HOST_PASSWORD='87hjkhjkhjk@'
 SERVER_EMAIL='lcw729@likelion.org'
 DEFAULT_FROM_MAIL='lcw729'
+
+
+ALLOWED_HOSTS = ['django-env.smcanuqpzp.us-west-2.elasticbeanstalk.com']
